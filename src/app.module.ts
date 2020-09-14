@@ -4,9 +4,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PageModule } from './pages/page.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
-  imports: [PageModule],
+  imports: [PageModule, MulterModule.register({
+    dest: './files',
+  })],
   controllers: [AppController, PageController],
   providers: [AppService, PageService],
 })
