@@ -7,9 +7,9 @@ export const databaseProviders = [
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: '',
-      database: 'filestorage',
+      username: 'debian',
+      password: 'root',
+      database: 'filestorages',
       entities: [
         __dirname + '/../**/*.entity{.ts,.js}',
       ],
