@@ -14,7 +14,9 @@ export class PageService {
     }
 
     async getById(id: number): Promise<Page> {
-        return this.pageRepository.findOne({ id: id })
+        const page = this.pageRepository.findOne({ id: id })
+        
+        return page;
     }
 
     async getByBook(id: number): Promise<Page[]> {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { extname } from "path";
 
 export const imageFileFilter = (req, file, callback) => {
@@ -8,6 +9,7 @@ export const imageFileFilter = (req, file, callback) => {
   };
 
   export const editFileName = (req, file, callback) => {
+    console.log(callback);
     const name = file.originalname.split('.')[0];
     const fileExtName = extname(file.originalname);
     const randomName = Array(4)
