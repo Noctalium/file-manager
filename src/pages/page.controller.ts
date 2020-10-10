@@ -29,18 +29,9 @@ export class PageController {
 
 
     @Post('addPage')
-    @UseInterceptors(
-        FileInterceptor('image', {
-            storage: diskStorage({
-                destination: './files/pages',
-                filename: editFileName,
-            }),
-            fileFilter: imageFileFilter,
-        }),
-    )
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    async addPageByBook(@UploadedFile() file, @Body('bookId') bookId: number): Promise<InsertResult> {
-        return await this.pageService.addPage(file.filename, bookId);
+    async addPageByBook(file: string, @Body('bookId') bookId: number): Promise<InsertResult> {
+        return await this.pageService.addPage(file, bookId);
     }
 
     
