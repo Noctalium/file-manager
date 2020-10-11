@@ -19,12 +19,19 @@ export class PageController {
 
     @Get('findPage/:id')
     async getPageById(@Param('id') id:number): Promise<any> {
-        return (await (await this.pageService.getById(id)).pagePath);
+        let pageUrl = (await (await this.pageService.getById(id)).pagePath);
+        return "http://51.210.103.165:2000/pages/"+pageUrl;
     }
 
     @Get('findByBook/:id')
     async getPagesByBook(@Param('id') id: number): Promise<Page[]> {
-        return await this.pageService.getByBook(id);
+        let pageArray = await this.pageService.getByBook(id);
+        let urlArray = []
+        pageArray.forEach(element => {
+            urlArray.push("http://51.210.103.165:2000/pages/"+element.pagePath);
+        });
+
+        return urlArray;
     }
 
 
